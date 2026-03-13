@@ -1,0 +1,35 @@
+import sys
+
+def solve_bus():
+  
+    lines = sys.stdin.read().splitlines()
+    if not lines:
+        return
+        
+    n = int(lines[0].strip())
+    seats = lines[1:n+1]
+    
+    found = False
+    for i in range(n):
+        row = seats[i]
+        
+      
+        if row[:2] == "OO":
+            seats[i] = "++" + row[2:]
+            found = True
+            break
+            
+       
+        elif row[3:] == "OO":
+            seats[i] = row[:3] + "++"
+            found = True
+            break
+            
+    if found:
+        print("YES")
+        print('\n'.join(seats))
+    else:
+        print("NO")
+
+if __name__ == '__main__':
+    solve_bus()
